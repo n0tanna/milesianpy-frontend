@@ -1,10 +1,12 @@
 export async function callEquationApi(equation) {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/calculation/${equation.equation}`);
-    const data = await response.json();
-    console.log(data)
-    return data
+    const url = `http://127.0.0.1:8000/calculation/${equation.equation}`;
+    const data = "";
+
+    const response = await fetch(url)
+    return response.json();
+    
   } catch (error) {
-   return error
+    return error;
   }
 }

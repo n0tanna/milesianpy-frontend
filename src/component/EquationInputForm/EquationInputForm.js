@@ -4,15 +4,16 @@ import { useState } from 'react';
 
 function EquationInputForm() {
   const [equation, setEquation] = useState();
+  const [result, setResult] = useState();
 
   async function sendCalculationData(equation) {
-    console.log(equation)
     const result = await callEquationApi(equation)
-    console.log(result)
+    setResult(result)
   }
   return (
     <>
-      <form>
+      <div>{result}</div>
+      <div>
         <input
           name="equation"
           placeholder="Type equation here"
@@ -21,7 +22,7 @@ function EquationInputForm() {
         <button name="submitButton" type="submit" onClick={() => sendCalculationData({equation})}>
           Submit
         </button>
-      </form>
+      </div>
     </>
   );
 }
