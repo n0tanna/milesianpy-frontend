@@ -1,11 +1,16 @@
 export async function callEquationApi(equation) {
   try {
-    const url = `http://127.0.0.1:8000/calculation/${equation.equation}`;
-    const data = "";
-
-    const response = await fetch(url)
+    const response = await fetch(`${process.env.REACT_APP_API_URL}calculation/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        equation: [...equation.equation],
+      }),
+    });
     return response.json();
-    
   } catch (error) {
     return error;
   }
